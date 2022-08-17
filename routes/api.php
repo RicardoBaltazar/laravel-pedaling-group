@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\RidesController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +12,13 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+ */
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('rides', [RidesController::class, 'index']);
+Route::namespace ('App\Http\Controllers\Api')->group(function () {
+    Route::post('auth/register', 'AuthController@createUser');
+    Route::post('auth/login', 'AuthController@loginUser');
+
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+        Route::apiResource('rides', 'RidesController');
+    });
 });
-
-
-Route::post('auth/register', [AuthController::class, 'createUser']);
-Route::post('auth/login', [AuthController::class, 'loginUser']);

@@ -14,7 +14,7 @@ class RidesController extends Controller
      */
     public function index()
     {
-        return response()->json('return rides', 200);
+        return response()->json('index', 200);
     }
 
     /**
@@ -25,7 +25,7 @@ class RidesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json('store', 200);
     }
 
     /**
@@ -36,7 +36,7 @@ class RidesController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json('show'.$id, 200);
     }
 
     /**
@@ -48,7 +48,7 @@ class RidesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return response()->json('update'.$id, 200);
     }
 
     /**
@@ -59,6 +59,6 @@ class RidesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return response()->json('delete'.$id, 200);
     }
 }
