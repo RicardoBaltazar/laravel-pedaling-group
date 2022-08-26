@@ -19,6 +19,6 @@ Route::namespace ('App\Http\Controllers\Api')->group(function () {
     Route::post('auth/login', 'AuthController@loginUser');
 
     Route::group(['middleware' => ['auth:sanctum']], function () {
-        Route::apiResource('rides', 'RidesController');
+        Route::apiResource('rides', 'RidesController'); //consult list - php artisan route:list
     });
 });

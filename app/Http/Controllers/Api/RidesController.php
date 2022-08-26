@@ -3,10 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RidesRequest;
+use App\Repositories\RidesRepository;
 use Illuminate\Http\Request;
 
 class RidesController extends Controller
 {
+    private $ridesRepository;
+
+    public function __construct(RidesRepository $RidesRepository)
+    {
+        $this->ridesRepository = $RidesRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,8 @@ class RidesController extends Controller
      */
     public function index()
     {
-        return response()->json('index', 200);
+        $response = $this->ridesRepository->index();
+        return $response;
     }
 
     /**
@@ -23,9 +32,10 @@ class RidesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RidesRequest $request)
     {
-        return response()->json('store', 200);
+        $response = $this->ridesRepository->store($request);
+        return $response;
     }
 
     /**
@@ -36,7 +46,7 @@ class RidesController extends Controller
      */
     public function show($id)
     {
-        return response()->json('show'.$id, 200);
+        return response()->json('show' . $id, 200);
     }
 
     /**
@@ -46,9 +56,10 @@ class RidesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RidesRequest $request, $id)
     {
-        return response()->json('update'.$id, 200);
+        $response = $this->ridesRepository->update($request, $id);
+        return $response;
     }
 
     /**
@@ -59,6 +70,7 @@ class RidesController extends Controller
      */
     public function destroy($id)
     {
-        return response()->json('delete'.$id, 200);
+        $response = $this->ridesRepository->destroy($id);
+        return $response;
     }
 }
