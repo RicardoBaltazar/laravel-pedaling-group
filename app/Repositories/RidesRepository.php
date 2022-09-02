@@ -36,7 +36,7 @@ class RidesRepository
         $newRide['user_id'] = $user->id;
 
         try {
-            $this->ride->create($newRide);
+            // $this->ride->create($newRide);
 
             return response()->json('new ride created successfully', 201);
 

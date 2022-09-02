@@ -24,13 +24,13 @@ class RidesRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'start_date' => 'required',
-            'start_date_registration' => 'required',
-            'end_date_registration' => 'required',
-            'additional_information' => 'required',
-            'start_place' => 'required',
-            'participants_limit' => 'required',
+            'name' => ['required', 'string'],
+            'start_date' => ['required', 'string'],
+            'start_date_registration' => ['required', 'string'],
+            'end_date_registration' => ['required', 'string'],
+            'additional_information' => ['required', 'string'],
+            'start_place' => ['required', 'string'],
+            'participants_limit' => ['required', 'int', 'max:100'],
         ];
     }
 }
